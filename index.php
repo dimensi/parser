@@ -1,10 +1,8 @@
 <?php
-namespace Func;
-
     require_once('functions.php');
-    // use function \Functions\getDocument;
-    // use function \Functions\findItems;
-    // use function \Functions\getPages;
+    use function \Func\getDocument;
+    use function \Func\findItems;
+    use function \Func\getPages;
     $document = getDocument('http://tiesshop.ru/catalog/102');
     $findItems = findItems($document);
     $pages = getPages($findItems);
