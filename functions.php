@@ -1,4 +1,6 @@
 <?php
+namespace Func;
+
 require_once('phpQuery/phpQuery.php');
 function getDocument($link) {
     $ch = curl_init();
@@ -6,7 +8,7 @@ function getDocument($link) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $catalog = curl_exec($ch);
     curl_close($ch);
-    return phpQuery::newDocumentHTML($catalog);
+    return \phpQuery::newDocumentHTML($catalog);
 }
 
 function findItems($document) {

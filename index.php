@@ -1,4 +1,6 @@
 <?php
+namespace Func;
+
     require_once('functions.php');
     // use function \Functions\getDocument;
     // use function \Functions\findItems;
