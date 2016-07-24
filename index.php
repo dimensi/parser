@@ -7,9 +7,9 @@
     use function \Functions\updateArrays;
     use function \Functions\saveToCSV;
 
-    $document = getDocument('http://tiesshop.ru/catalog/102');
+    $document = getDocument('http://tiesshop.ru/catalog/137');
     $findItems = findItems($document);
     $pages = getPages($findItems);
     $lexicon = createLexicon($pages);
     $result = updateArrays($pages, $lexicon);
-    saveToCSV($result, 'file.csv');
+    saveToCSV($result, 'file3.csv');

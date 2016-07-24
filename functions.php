@@ -32,7 +32,7 @@ function findItems($document) // Получает из каталога все �
 function getTitlePage($document) // Получает название со страницы товара
 {
     $title = $document->find('.pad > h1')->text();
-    $clearTitle = preg_replace('/\b[HSM]{1}[0-9]*\b|\!{2,}/', '', $title); // Очищаю название товара от мусора
+    $clearTitle = preg_replace('/\b[HSMCU]{1}[0-9]*\b|\!{2,}/', '', $title); // Очищаю название товара от мусора
 
     return mb_convert_encoding(trim(preg_replace('/\s{2,}/', ' ', $clearTitle)), 'windows-1251'); // Очищаю от лишних пробелов и конвертирую
 }
