@@ -36,7 +36,11 @@ function getTitlePage($document) // Получает название со ст�
 
     return mb_convert_encoding(trim(preg_replace('/\s{2,}/', ' ', $clearTitle)), 'windows-1251'); // Очищаю от лишних пробелов и конвертирую
 }
-
+function getPricePage($document) // Получает название со страницы товара
+{
+    $price = $document->find('.good_text2 > b')->text();
+    return mb_convert_encoding(trim(preg_replace('/\s{2,}|\D/', ' ', $price)), 'windows-1251'); // Очищаю от лишних пробелов и конвертирую
+}
 function getSkuPage($title) // Получает SKU из названия товара
 {
     return trim(preg_replace('/\D{0,}\b/', '', $title));
@@ -49,8 +53,10 @@ function getPages($links) // Собирает все данные из стра�
         $pageDoc = getDocument($link); // Получил дом
         $title = getTitlePage($pageDoc); // Получил название
         $sku = getSkuPage($title); // Получил SKU
+        $price = getPricePage($pageDoc); // Получил цену
         $table[$nameTitle] = $title; // Записал название в массив
         $table['SKU'] = $sku; // Записал SKU в массив
+        $table['Price'] = $price; // Записал цену в Price
         foreach ($pageDoc->find('table#properties > tr') as $tr) {
             $trPq = pq($tr);
             $tdKey = mb_convert_encoding(trim($trPq->children('td')->eq(0)->text()), 'windows-1251'); // Обрезаю и конвертирую
